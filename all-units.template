@@ -1,0 +1,608 @@
+
+[core]
+logIfCreditResourceUsed: true
+switchPriceWithStreamingCost: true
+
+[graphics]
+image_shadow: AUTO_ANIMATED
+shadowOffsetX: 3
+shadowOffsetY: 0
+
+[global_resource_steel]
+iconImage: ROOT:steel.png
+displayName: Steel
+displayNameShort: Steel
+displayRoundedDown: true
+priority: 1
+displayColor: #aca496
+
+[global_resource_coal]
+iconImage: ROOT:coal.png
+displayName: Coal
+displayNameShort: Coal
+displayRoundedDown: true
+priority: 2
+displayColor: #4e4e4e
+
+[global_resource_titanium]
+iconImage: ROOT:titanium.png
+displayName: Titanium
+displayNameShort: Titanium
+displayRoundedDown: true
+priority: 1
+displayColor: #245e93
+
+[global_resource_uranium]
+iconImage: ROOT:uranium.png
+displayName: Uranium
+displayNameShort: Uranium
+displayRoundedDown: true
+priority: 1
+displayColor: #208657
+
+#============ Tier I Effects ============#
+
+[effect_scorchXD]
+image:ROOT:/effects/scorch.png
+priority: critical
+life: 600
+fadeOut: true
+attachedToUnit: false
+dirOffsetRandom: 360
+alpha: 6
+scaleFrom: ${core.radius/19}
+scaleTo: ${core.radius/19}
+drawUnderUnits: true
+createWhenOverLiquid: false
+
+
+[effect_flameA]
+life: 9
+image: ROOT:/effects/a/flame.png
+attachedToUnit: true
+fadeInTime: 15
+scaleFrom: 1.7
+scaleTo: 0.3
+alpha: 3
+dirOffsetRandom: 5
+yOffsetRelative: 5
+alsoEmitEffects: CUSTOM:scorchA2*2, CUSTOM:lightShot, CUSTOM:smokeShot*2, CUSTOM:smokeShot2*2
+
+[effect_crater]
+spawnChance: 0.5
+image:ROOT:/effects/crater.png
+priority: critical
+life: 240
+fadeOut: true
+attachedToUnit: false
+dirOffsetRandom: 360
+alpha: 1
+scaleFrom: 0.45
+scaleTo: 0.45
+drawUnderUnits: true
+createWhenOverLiquid: false
+
+[effect_smokeShot]
+stripIndex: smoke_white
+frameIndex: 0
+priority: high
+life: 20
+ySpeedRelative: 0.3
+ySpeedRelativeRandom: 0.3
+xSpeedRelativeRandom: 0.1
+fadeOut: true
+attachedToUnit: false
+scaleFrom: 0.2
+scaleTo: 0.5
+alpha: 0.9
+drawUnderUnits: false
+yOffsetRelative: 5
+
+[effect_smokeShot2]
+stripIndex: smoke_white
+frameIndex: 0
+priority: high
+life: 20
+ySpeedRelativeRandom: 0.1
+xSpeedRelativeRandom: 0.3
+fadeOut: true
+attachedToUnit: false
+scaleFrom: 0.2
+scaleTo: 0.5
+alpha: 0.9
+drawUnderUnits: false
+yOffsetRelative: 2
+
+[effect_lightShot]
+image: ROOT:/effects/light2.png
+life: 15
+fadeInTime: 2
+fadeOut: true
+attachedToUnit: false
+color: #ffdd96
+scaleFrom: 0.2
+scaleTo: 0.4
+alpha: 0.45
+drawUnderUnits:false
+yOffsetAbsolute:-5
+
+[effect_explodeA]
+priority: critical
+life: 100
+attachedToUnit: false
+scaleFrom: 2
+scaleTo: 2
+alpha: 0.9
+drawUnderUnits: false
+liveAfterAttachedDies: true
+image: ROOT:/effects/a/explode.png
+alsoPlaySound: ROOT:/soundFx/exp.ogg:0.3
+total_frames: 8
+dirOffset: 0
+animateFrameStart: 0
+animateFrameEnd: 7
+animateFrameSpeed: 0.7
+alsoEmitEffects: CUSTOM:crater, CUSTOM:scorchA*4, CUSTOM:sparkA*3, CUSTOM:lightShot
+
+[effect_shockwaveA]
+image: ROOT:/effects/a/shockwave.png
+life: 20
+fadeInTime: 4
+fadeOut: true
+attachedToUnit: true
+color: #FFFFFF
+scaleFrom: 0.6
+scaleTo: 2.4
+alpha: 0.9
+drawUnderUnits:false
+hSpeed:0.01
+xSpeedAbsoluteRandom:0.1
+ySpeedAbsoluteRandom:0.3
+
+[effect_scorchA]
+image: ROOT:/effects/a/line.png
+priority: critical
+life: 13
+fadeOut: true
+attachedToUnit: false
+color: #FFFFFF
+scaleFrom: 1
+scaleTo: 0.5
+alpha: 1
+drawUnderUnits:false
+ySpeedRelativeRandom: 2
+xSpeedRelativeRandom: 0.1
+atmospheric: true
+
+[effect_scorchA2]
+image: ROOT:/effects/a/line.png
+priority: critical
+life: 20
+fadeOut: true
+attachedToUnit: false
+color: #FFFFFF
+scaleFrom: 1
+scaleTo: 0.5
+alpha: 1.3
+drawUnderUnits:false
+ySpeedRelative: 1.2
+ySpeedRelativeRandom: 1.4
+xSpeedRelativeRandom: 0.15
+atmospheric: true
+dirOffsetRandom: 10
+
+[effect_sparkA]
+image: ROOT:/effects/a/spark.png
+priority: critical
+life: 20
+fadeOut: true
+attachedToUnit: false
+color: #FFFFFF
+scaleFrom: 0.6
+scaleTo: 0.3
+alpha: 2
+drawUnderUnits:false
+ySpeedRelativeRandom: 1
+xSpeedRelativeRandom: 1
+atmospheric: true
+
+[effect_hurt]
+priority: critical
+life: 100
+spawnChance:0.8
+attachedToUnit: false
+scaleFrom: 1.1
+scaleTo: 1.1
+alpha: 1
+drawUnderUnits: false
+liveAfterAttachedDies: true
+dirOffsetRandom: 130
+image: ROOT:/effects/hurt.png
+alsoPlaySound: ROOT:/soundFx/hurt.wav:0.1, ROOT:/soundFx/hurt2.wav:0.1, ROOT:/soundFx/hurt3.wav:0.1
+total_frames: 6
+animateFrameStart: 0
+animateFrameEnd: 6
+animateFrameSpeed: 0.6
+xOffsetRelativeRandom: 10
+yOffsetRelativeRandom: 10
+alsoEmitEffects=CUSTOM:sparkHR*2
+spawnChance: 0.1
+
+[effect_sparkHR]
+priority: low
+attachedToUnit: false
+life: 50
+physics: true
+scaleFrom: 1
+scaleTo: 1
+dirOffset: 20
+dirOffsetRandom: 4
+dirSpeed:5
+dirSpeedRandom:2
+xSpeedRelativeRandom: 0.6
+ySpeedRelativeRandom: 1
+hSpeed: 1.6
+alpha:3
+image:ROOT:/effects/spark2.png
+drawUnderUnits: false
+xOffsetRelativeRandom: 0.45
+yOffsetRelativeRandom: 0.45
+
+
+#============ Tier II Effects ============#
+
+
+[effect_flame]
+life: 15
+image: ROOT:/effects/flame.png
+attachedToUnit: true
+fadeInTime: 9
+scaleFrom: 1.5
+scaleTo: 0.1
+alpha: 3
+dirOffsetRandom: 5
+yOffsetRelative: 5
+alsoEmitEffects: CUSTOM:scorch2*2, CUSTOM:lightShot2, CUSTOM:smokeShot*2
+
+[effect_lightShot2]
+image: ROOT:/effects/light.png
+life: 15
+fadeInTime: 2
+fadeOut: true
+attachedToUnit: false
+color: #ffdd96
+scaleFrom: 0.2
+scaleTo: 0.4
+alpha: 0.45
+drawUnderUnits:false
+yOffsetAbsolute:-5
+
+[effect_electric]
+life: 10
+image: ROOT:/effects/electric.png
+attachedToUnit: true
+fadeInTime: 1
+scaleFrom: 2
+scaleTo: 2.1
+alpha: 3
+dirOffsetRandom: 1
+yOffsetRelative: 20
+xOffsetRelative: 1
+alsoEmitEffects: CUSTOM:scorch*2
+
+
+[effect_lancer]
+life: 23
+image: ROOT:/effects/lanc.png
+attachedToUnit: true
+fadeInTime: 9
+scaleFrom: 1.5
+scaleTo: 0.35
+alpha: 3
+dirOffsetRandom: 0
+yOffsetRelative: 5
+alsoEmitEffects: CUSTOM:scorch2*2
+drawUnderUnits: true
+
+[effect_explode]
+priority: critical
+life: 100
+attachedToUnit: false
+scaleFrom: 2.5
+scaleTo: 2.5
+alpha: 0.9
+drawUnderUnits: false
+liveAfterAttachedDies: true
+image: ROOT:/effects/explode.png
+alsoPlaySound: ROOT:/soundFx/exp.ogg:0.3
+total_frames: 8
+dirOffset: 0
+animateFrameStart: 0
+animateFrameEnd: 7
+animateFrameSpeed: 0.7
+alsoEmitEffects: CUSTOM:shockwave, CUSTOM:scorch*4, CUSTOM:spark*3, CUSTOM:lightShot2
+
+[effect_shockwave]
+image: ROOT:/effects/shockwave.png
+life: 20
+fadeInTime: 4
+fadeOut: true
+attachedToUnit: true
+color: #FFFFFF
+scaleFrom: 0.6
+scaleTo: 2.4
+alpha: 0.9
+drawUnderUnits:false
+hSpeed:0.01
+xSpeedAbsoluteRandom:0.1
+ySpeedAbsoluteRandom:0.3
+
+[effect_scorch]
+image: ROOT:/effects/line.png
+priority: critical
+life: 13
+fadeOut: true
+attachedToUnit: false
+color: #FFFFFF
+scaleFrom: 1
+scaleTo: 0.5
+alpha: 1
+drawUnderUnits:false
+ySpeedRelativeRandom: 2
+xSpeedRelativeRandom: 0.1
+atmospheric: true
+
+[effect_scorch2]
+image: ROOT:/effects/line.png
+priority: critical
+life: 20
+fadeOut: true
+attachedToUnit: false
+color: #FFFFFF
+scaleFrom: 1
+scaleTo: 0.5
+alpha: 1
+drawUnderUnits:false
+ySpeedRelative: 1.2
+ySpeedRelativeRandom: 1.4
+xSpeedRelativeRandom: 0.02
+atmospheric: true
+dirOffsetRandom: 10
+
+[effect_spark]
+image: ROOT:/effects/spark.png
+priority: critical
+life: 20
+fadeOut: true
+attachedToUnit: false
+color: #FFFFFF
+scaleFrom: 0.6
+scaleTo: 0.3
+alpha: 2
+drawUnderUnits:false
+ySpeedRelativeRandom: 1
+xSpeedRelativeRandom: 1
+atmospheric: true
+
+
+#============ BIG Effects ============#
+
+[effect_flameBig]
+life: 15
+image: ROOT:/effects/flame.png
+attachedToUnit: true
+fadeInTime: 9
+scaleFrom: 3
+scaleTo: 0.5
+alpha: 3
+dirOffsetRandom: 5
+yOffsetRelative: 5
+alsoEmitEffects: CUSTOM:scorchBig2*2, CUSTOM:lightShotBig
+
+[effect_lightShotBig]
+image: ROOT:/effects/light.png
+life: 15
+fadeInTime: 2
+fadeOut: true
+attachedToUnit: false
+color: #ffdd96
+scaleFrom: 0.4
+scaleTo: 0.9
+alpha: 0.55
+drawUnderUnits:false
+yOffsetAbsolute:-5
+
+[effect_explodeBig]
+priority: critical
+life: 100
+attachedToUnit: false
+scaleFrom: 8
+scaleTo: 8
+alpha: 0.9
+drawUnderUnits: false
+liveAfterAttachedDies: true
+image: ROOT:/effects/explode.png
+alsoPlaySound: ROOT:/soundFx/exp.ogg:0.3
+total_frames: 8
+dirOffset: 0
+animateFrameStart: 0
+animateFrameEnd: 7
+animateFrameSpeed: 0.2
+alsoEmitEffects: CUSTOM:shockwaveBig, CUSTOM:scorchBig*4, CUSTOM:sparkBig*3, CUSTOM:lightShotBig
+
+[effect_shockwaveBig]
+image: ROOT:/effects/shockwave.png
+life: 60
+fadeInTime: 4
+fadeOut: true
+attachedToUnit: true
+color: #FFFFFF
+scaleFrom: 0.8
+scaleTo: 8
+alpha: 0.9
+drawUnderUnits:false
+hSpeed:0.01
+xSpeedAbsoluteRandom:0.2
+ySpeedAbsoluteRandom:0.6
+
+[effect_scorchBig]
+image: ROOT:/effects/line.png
+priority: critical
+life: 60
+fadeOut: true
+attachedToUnit: false
+color: #FFFFFF
+scaleFrom: 1.5
+scaleTo: 1
+alpha: 1
+drawUnderUnits:false
+ySpeedRelativeRandom: 3.5
+xSpeedRelativeRandom: 0.3
+atmospheric: true
+
+[effect_scorchBig2]
+image: ROOT:/effects/line.png
+priority: critical
+life: 60
+fadeOut: true
+attachedToUnit: false
+color: #FFFFFF
+scaleFrom: 1.5
+scaleTo: 1
+alpha: 1
+drawUnderUnits:false
+ySpeedRelative: 2
+ySpeedRelativeRandom: 2.2
+xSpeedRelativeRandom: 0.4
+atmospheric: true
+dirOffsetRandom: 10
+
+[effect_sparkBig]
+image: ROOT:/effects/spark.png
+priority: critical
+life: 60
+fadeOut: true
+attachedToUnit: false
+color: #FFFFFF
+scaleFrom: 3
+scaleTo: 1.5
+alpha: 2
+drawUnderUnits:false
+ySpeedRelativeRandom: 5
+xSpeedRelativeRandom: 2.5
+atmospheric: true
+
+
+
+#============== Tier III
+
+[effect_flameB]
+color: red
+life: 15
+image: ROOT:/effects/b/flame.png
+attachedToUnit: true
+fadeInTime: 9
+scaleFrom: 1.5
+scaleTo: 0.1
+alpha: 3
+dirOffsetRandom: 5
+yOffsetRelative: 5
+alsoEmitEffects: CUSTOM:scorchB2*2, CUSTOM:lightShot3, CUSTOM:smokeShot*2
+
+[effect_lightShot3]
+image: ROOT:/effects/b/light2.png
+life: 15
+fadeInTime: 2
+fadeOut: true
+attachedToUnit: false
+color: #ffdd96
+scaleFrom: 0.2
+scaleTo: 0.4
+alpha: 0.45
+drawUnderUnits:false
+yOffsetAbsolute:-5
+
+[effect_explodeB]
+color: red
+priority: critical
+life: 100
+attachedToUnit: false
+scaleFrom: 2
+scaleTo: 30
+alpha: 0.9
+drawUnderUnits: false
+liveAfterAttachedDies: true
+image: ROOT:/effects/b/explode.png
+alsoPlaySound: ROOT:/soundFx/exp.ogg:0.3
+total_frames: 8
+dirOffset: 0
+animateFrameStart: 0
+animateFrameEnd: 7
+animateFrameSpeed: 0.7
+alsoEmitEffects: CUSTOM:scorchB*4, CUSTOM:sparkB*3, CUSTOM:shockwaveB, CUSTOM:lightShot3
+
+[effect_shockwaveB]
+color: red
+image: ROOT:/effects/b/shockwave.png
+life: 20
+fadeInTime: 4
+fadeOut: true
+attachedToUnit: false
+color: #FFFFFF
+scaleFrom: 0.6
+scaleTo: 2.4
+alpha: 3
+drawUnderUnits:false
+hSpeed:0.01
+xSpeedAbsoluteRandom:0.1
+ySpeedAbsoluteRandom:0.3
+
+[effect_scorchB]
+color: red
+image: ROOT:/effects/b/line.png
+priority: critical
+life: 13
+fadeOut: true
+attachedToUnit: false
+color: #FFFFFF
+scaleFrom: 2
+scaleTo: 1
+alpha: 1
+drawUnderUnits:false
+ySpeedRelativeRandom: 2
+xSpeedRelativeRandom: 0.1
+atmospheric: true
+
+[effect_scorchB2]
+color: red
+image: ROOT:/effects/b/line.png
+priority: critical
+life: 20
+fadeOut: true
+attachedToUnit: false
+color: #FFFFFF
+scaleFrom: 2
+scaleTo: 1
+alpha: 1.3
+drawUnderUnits:false
+ySpeedRelative: 1.2
+ySpeedRelativeRandom: 1.4
+xSpeedRelativeRandom: 0.15
+atmospheric: true
+dirOffsetRandom: 10
+
+[effect_sparkB]
+color: red
+image: ROOT:/effects/b/spark.png
+priority: critical
+life: 20
+fadeOut: true
+attachedToUnit: false
+color: #FFFFFF
+scaleFrom: 1
+scaleTo: 0.3
+alpha: 2
+drawUnderUnits:false
+ySpeedRelativeRandom: 1
+xSpeedRelativeRandom: 1
+atmospheric: true
